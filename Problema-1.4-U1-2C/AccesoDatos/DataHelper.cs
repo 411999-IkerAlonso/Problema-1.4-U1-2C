@@ -28,7 +28,7 @@ namespace Problema_1._4_U1_2C.AccesoDatos
             return _instance;
         }
 
-        public DataTable ExecuteSPQuery(string sp, List<ParameterSQL>? parameters)
+        public DataTable ExecuteSPQuery(string sp, List<ParameterSQL>? parameters) //Esto n o sirve si se usa TRANSACTION
         {
             DataTable dt = new DataTable();
             try
@@ -51,6 +51,37 @@ namespace Problema_1._4_U1_2C.AccesoDatos
                 dt = null;
             }
             return dt;
+        }
+
+
+        public int ExecuteSpDML(string sp, List<ParameterSQL>? parameters) //DML: Sentencias de Insercion, Edicion y Eliminacion
+        {
+            int rows;
+            try
+            {
+                _connection.Open();
+                var cmd = new SqlCommand(sp, _connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                if (parameters != null)
+                {
+                    foreach(var param in parameters)
+                    {
+                        cmd.Parameters.AddWithValue(param.Name, param.Value);
+                    }
+                }
+                rows = cmd.ExecuteNonQuery();
+                _connection.Close();
+            }
+            catch (SqlException)
+            {
+                rows = 0;
+            }
+            return rows;    
+        }
+
+        public SqlConnection GetConnection() //Lo hago asi porque sino rompe el singleton
+        {
+            return _connection;
         }
 
     }

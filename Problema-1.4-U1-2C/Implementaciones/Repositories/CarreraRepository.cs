@@ -4,6 +4,7 @@ using Problema_1._4_U1_2C.Servicios.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,12 +13,47 @@ namespace Problema_1._4_U1_2C.Servicios.Repositories
 {
     public class CarreraRepository : ICarreraRepository
     {
-        public void Create(Carrera carrera)
+        public bool Create(Carrera carrera)
         {
-            throw new NotImplementedException();
+            bool result = true;
+            SqlConnection cnn = null;
+            SqlTransaction transaction = null;
+            try
+            {
+                cnn = DataHelper.GetInstance().GetConnection();
+                cnn.Open();
+                transaction = cnn.BeginTransaction();
+                var cmd = new SqlCommand("SP_INSERTAR_CARRERA", cnn, transaction);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@nombre", carrera.Nombre);
+                cmd.Parameters.AddWithValue("@detalle", 1);
+                cmd.ExecuteNonQuery();
+
+                //Parametro de salida(EN MI CASO COMO SOY BOLUDO VA A SALIR EL DEL DETALLE)
+                //SqlParameter param = new SqlParameter("@nro", SqlDbType.Int);
+                //param.Direction = ParameterDirection.Output;
+                //cmd.Parameters.Add(param);
+                //cmd.ExecuteNonQuery();
+                //int nro = (int)param.Value;
+                transaction.Commit();
+            }
+            catch (Exception)
+            {
+                if (transaction != null) transaction.Rollback(); //Si la transaccion no anduvo se hace rollback y devuelve falso
+                result = false;
+                
+            }
+            finally //Siempre se eejcuta y por ende siempre debe cerrarse la conexion 
+            {
+                if (cnn != null && cnn.State == ConnectionState.Open)
+                {
+                    cnn.Close();
+                }
+            }
+            return result;
         }
 
-        public void Delete(int id)
+        public bool Delete(int id)
         {
             throw new NotImplementedException();
         }
@@ -135,7 +171,7 @@ namespace Problema_1._4_U1_2C.Servicios.Repositories
             }
         }
 
-        public void Update(int id)
+        public bool Update(int id)
         {
             throw new NotImplementedException();
         }

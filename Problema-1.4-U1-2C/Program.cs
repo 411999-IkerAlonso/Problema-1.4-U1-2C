@@ -3,7 +3,7 @@ using Problema_1._4_U1_2C.Presentacion.Dominio;
 
 CarreraRepositoryService service = new CarreraRepositoryService();
 List<Carrera> carreras = service.GetCarreras();
-Carrera carreraId = service.GetCarreraById(2);
+Carrera carreraId = service.GetCarreraById(4);
 Carrera carreraName = service.GetCarreraByName("humanidades");
 
 if (carreras.Count > 0)

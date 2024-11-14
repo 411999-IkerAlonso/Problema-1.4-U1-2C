@@ -22,3 +22,4 @@ C:\Users\usuario\Desktop\KIKER\FACULTAD\PROGRAMACION II\UNIDAD 1\EJERCICIOS\Prob
 C:\Users\usuario\Desktop\KIKER\FACULTAD\PROGRAMACION II\UNIDAD 1\EJERCICIOS\Problema-1.4-U1-2C\Problema-1.4-U1-2C\obj\Debug\net8.0\Problema-1.4-U1-2C.pdb
 C:\Users\usuario\Desktop\KIKER\FACULTAD\PROGRAMACION II\UNIDAD 1\EJERCICIOS\Problema-1.4-U1-2C\Problema-1.4-U1-2C\obj\Debug\net8.0\Problema-1.4-U1-2C.genruntimeconfig.cache
 C:\Users\usuario\Desktop\KIKER\FACULTAD\PROGRAMACION II\UNIDAD 1\EJERCICIOS\Problema-1.4-U1-2C\Problema-1.4-U1-2C\obj\Debug\net8.0\ref\Problema-1.4-U1-2C.dll
+C:\Users\usuario\Desktop\KIKER\FACULTAD\PROGRAMACION II\UNIDAD 1\EJERCICIOS\Problema-1.4-U1-2C\Problema-1.4-U1-2C\obj\Debug\net8.0\Problema-1.4-U1-2C.sourcelink.json

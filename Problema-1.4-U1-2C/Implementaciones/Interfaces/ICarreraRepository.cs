@@ -18,10 +18,10 @@ namespace Problema_1._4_U1_2C.Servicios.Interfaces
         Carrera GetByName(string name);
         //Crear, modificar y registrar baja lógica de las entidades
         //CREAR
-        void Create(Carrera carrera);
+        bool Create(Carrera carrera);
         //MODIFICAR
-        void Update(int id);
+        bool Update(int id);
         //BAJA LOGICA
-        void Delete(int id);
+        bool Delete(int id);
     }
 }
